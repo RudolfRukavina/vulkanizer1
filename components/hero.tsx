@@ -18,7 +18,7 @@ function Hero() {
             </h1>
             <p className="mb-6">
               Delivering the highest quality auto repair is the way we forge
-              relationships with our customers and the way we've always done
+              relationships with our customers and the way we&apos;ve always done
               business.
             </p>
             <button className="bg-accent hover:bg-accentLight text-white font-bold py-2 px-4">

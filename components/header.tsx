@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { Wrench } from "lucide-react";
 import {
@@ -13,8 +11,6 @@ import {
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <header className="w-full mt-auto  bg-dark text-white">
       <div className="container border-b border-gray-600 py-8 px-3 md:px-0 mx-auto flex justify-between items-center">
