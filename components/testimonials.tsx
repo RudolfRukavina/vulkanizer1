@@ -100,21 +100,6 @@ export default function Testimonials() {
     }
   };
 
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 100 : -100,
-      opacity: 0
-    }),
-    center: {
-      x: 0,
-      opacity: 1
-    },
-    exit: (direction: number) => ({
-      x: direction < 0 ? 100 : -100,
-      opacity: 0
-    })
-  };
-
   const testimonialVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -221,7 +206,7 @@ export default function Testimonials() {
           <AnimatePresence mode="wait">
             {testimonials
               .slice(currentIndex, currentIndex + 1)
-              .map((testimonial, index) => (
+              .map((testimonial) => (
                 <motion.div
                   key={currentIndex}
                   variants={testimonialVariants}
