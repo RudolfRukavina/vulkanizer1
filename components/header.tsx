@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { Wrench } from "lucide-react";
 import {
   Sheet,
@@ -45,32 +46,92 @@ export function Header() {
     }
   };
 
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const slideDown = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const menuItem = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3 }
+    }
+  };
+
   return (
-    <header id="header" className="w-full mt-auto  bg-dark text-white">
+    <motion.header
+      id="header"
+      className="w-full mt-auto bg-dark text-white"
+      initial="hidden"
+      animate="visible"
+    >
       <div className="container border-b border-gray-600 py-8 px-3 md:px-0 mx-auto flex justify-between items-center">
-        <div className="flex items-center gap-6">
+        <motion.div
+          className="flex items-center gap-6"
+          variants={slideDown}
+        >
           <Link href="/" className="flex items-center space-x-2">
             <Wrench className="h-8 w-8" />
             <span className="font-bold text-2xl">Vulkanizer</span>
           </Link>
-        </div>
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:flex items-center gap-6">
+        </motion.div>
+        <motion.div
+          className="flex items-center gap-6"
+          variants={slideDown}
+        >
+          <motion.nav
+            className="hidden md:flex items-center gap-6"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
             {links.map((link, index) => (
-              <Link
-                key={index}
-                href={`#${link.id}`}
-                onClick={(e) => smoothScroll(e, link.id)}
-                className="text-gray-400 hover:text-white transition-colors"
-              >
-                {link.name}
-              </Link>
+              <motion.div key={index} variants={menuItem}>
+                <Link
+                  href={`#${link.id}`}
+                  onClick={(e) => smoothScroll(e, link.id)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))}
-          </nav>
-          <button className="hidden md:inline-flex bg-accent hover:bg-accentLight text-white font-bold py-2 px-4">
+          </motion.nav>
+          <motion.button
+            className="hidden md:inline-flex bg-accent hover:bg-accentLight text-white font-bold py-2 px-4"
+            variants={slideDown}
+          >
             Rezerviraj termin
-          </button>
-          <div className="md:hidden">
+          </motion.button>
+          <motion.div
+            className="md:hidden"
+            variants={fadeIn}
+          >
             <Sheet>
               <SheetTrigger className="grid place-items-center">
                 <div className="grid grid-cols-2 gap-2 place-items-center">
@@ -84,23 +145,29 @@ export function Header() {
                 <SheetHeader>
                   <SheetTitle>Navigation</SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col items-center gap-6 mt-12">
+                <motion.nav
+                  className="flex flex-col items-center gap-6 mt-12"
+                  variants={staggerContainer}
+                  initial="hidden"
+                  animate="visible"
+                >
                   {links.map((link, index) => (
-                    <Link
-                      key={index}
-                      href={`#${link.id}`}
-                      onClick={(e) => smoothScroll(e, link.id)}
-                      className="text-dark"
-                    >
-                      {link.name}
-                    </Link>
+                    <motion.div key={index} variants={menuItem}>
+                      <Link
+                        href={`#${link.id}`}
+                        onClick={(e) => smoothScroll(e, link.id)}
+                        className="text-dark"
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
                   ))}
-                </nav>
+                </motion.nav>
               </SheetContent>
             </Sheet>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </header>
+    </motion.header>
   );
 }

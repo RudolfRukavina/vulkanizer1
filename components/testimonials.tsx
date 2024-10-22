@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   HiOutlineArrowLongLeft,
   HiOutlineArrowLongRight,
@@ -85,10 +86,67 @@ export default function Testimonials() {
     setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0));
   };
 
+  const fadeInUp = {
+    hidden: {
+      opacity: 0,
+      y: 30
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6
+      }
+    }
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 100 : -100,
+      opacity: 0
+    }),
+    center: {
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      x: direction < 0 ? 100 : -100,
+      opacity: 0
+    })
+  };
+
+  const testimonialVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: {
+        duration: 0.3
+      }
+    }
+  };
+
   return (
-    <section id="testimonials-section" className="py-20 bg-light">
+    <motion.section
+      id="testimonials-section"
+      className="py-20 bg-light"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={fadeInUp}
+    >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center mb-20">
+        <motion.div
+          className="flex justify-between items-center mb-20"
+          variants={fadeInUp}
+        >
           <h2 className="text-4xl md:text-5xl font-bold">
             Iskustva naših klijenata
           </h2>
@@ -118,56 +176,76 @@ export default function Testimonials() {
               <HiOutlineArrowLongRight size={24} />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Desktop view */}
         <div className="md:grid grid-cols-1 md:grid-cols-2 gap-20 hidden">
-          {[0, 1].map((offset) => {
-            const index = currentIndex * 2 + offset;
-            if (index >= testimonials.length) return null;
-            return (
-              <div key={index}>
-                <p className="italic">
-                  &quot;{testimonials[index].comment}&quot;
-                </p>
-                <hr className="my-4 border-gray-400" />
-                <div className="flex items-center">
-                  <Image
-                    src={testimonials[index].image}
-                    alt={testimonials[index].name}
-                    width={50}
-                    height={50}
-                    className="rounded-full mr-4"
-                  />
-                  <p className="font-bold">{testimonials[index].name}</p>
-                </div>
-              </div>
-            );
-          })}
+          <AnimatePresence mode="wait">
+            {[0, 1].map((offset) => {
+              const index = currentIndex * 2 + offset;
+              if (index >= testimonials.length) return null;
+              return (
+                <motion.div
+                  key={index}
+                  variants={testimonialVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  layout
+                >
+                  <motion.p
+                    className="italic"
+                    layout
+                  >
+                    &quot;{testimonials[index].comment}&quot;
+                  </motion.p>
+                  <motion.hr className="my-4 border-gray-400" layout />
+                  <motion.div className="flex items-center" layout>
+                    <Image
+                      src={testimonials[index].image}
+                      alt={testimonials[index].name}
+                      width={50}
+                      height={50}
+                      className="rounded-full mr-4"
+                    />
+                    <p className="font-bold">{testimonials[index].name}</p>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
 
         {/* Mobile view */}
         <div className="grid grid-cols-1 md:hidden">
-          {testimonials
-            .slice(currentIndex, currentIndex + 1)
-            .map((testimonial, index) => (
-              <div key={index}>
-                <p className="italic">&quot;{testimonial.comment}&quot;</p>
-                <hr className="my-4 border-gray-400" />
-                <div className="flex items-center">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    width={50}
-                    height={50}
-                    className="rounded-full mr-4"
-                  />
-                  <p className="font-bold">{testimonial.name}</p>
-                </div>
-              </div>
-            ))}
+          <AnimatePresence mode="wait">
+            {testimonials
+              .slice(currentIndex, currentIndex + 1)
+              .map((testimonial, index) => (
+                <motion.div
+                  key={currentIndex}
+                  variants={testimonialVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  <p className="italic">&quot;{testimonial.comment}&quot;</p>
+                  <hr className="my-4 border-gray-400" />
+                  <div className="flex items-center">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      width={50}
+                      height={50}
+                      className="rounded-full mr-4"
+                    />
+                    <p className="font-bold">{testimonial.name}</p>
+                  </div>
+                </motion.div>
+              ))}
+          </AnimatePresence>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
