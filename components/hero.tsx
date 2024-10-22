@@ -89,7 +89,7 @@ function Hero() {
               Kvaliteta i brzina su naš zaštitni znak, a zadovoljstvo naših
               klijenata nam je na prvom mjestu.
             </p>
-            <button className="bg-accent hover:bg-accentLight text-white font-bold py-2 px-4">
+            <button className="bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4">
               Nazovite odmah
             </button>
             <motion.div
@@ -204,7 +204,7 @@ function Hero() {
             <p className="border px-4 h-full flex items-center border-gray-600 border-r-0">
               Nazovite nas za više informacija
             </p>
-            <button className="flex min-w-fit items-center justify-center gap-2 bg-accent hover:bg-accentLight text-white font-bold h-full px-4">
+            <button className="flex min-w-fit items-center justify-center gap-2 bg-accent hover:bg-accentLight transition-colors text-white font-bold h-full px-4">
               <FaPhoneVolume />
               <span>Nazovite odmah</span>
             </button>

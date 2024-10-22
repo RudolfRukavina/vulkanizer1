@@ -163,7 +163,7 @@ export default function Services() {
               vulkanizera pruža vrhunsku uslugu zamjene i održavanja guma uz
               pristupačne cijene i brzu uslugu.
             </p>
-            <button className="bg-accent hover:bg-accentLight text-white font-bold py-2 px-4">
+            <button className="bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4">
               +(385) 91-453-3298
             </button>
           </motion.div>

@@ -56,9 +56,9 @@ export default function Footer() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   const fadeIn = {
@@ -66,9 +66,9 @@ export default function Footer() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   return (
@@ -112,7 +112,12 @@ export default function Footer() {
               <motion.div variants={fadeInUp}>
                 <h4 className="font-bold mb-4">Društvene mreže</h4>
                 <div className="flex space-x-4">
-                  {[RiFacebookFill, RiTwitterXFill, RiInstagramFill, RiLinkedinFill].map((Icon, index) => (
+                  {[
+                    RiFacebookFill,
+                    RiTwitterXFill,
+                    RiInstagramFill,
+                    RiLinkedinFill,
+                  ].map((Icon, index) => (
                     <a
                       key={index}
                       href="#"
@@ -147,11 +152,14 @@ export default function Footer() {
             <div className="p-12">
               <Link href="/" className="flex items-center space-x-2 mb-6">
                 <Wrench className="h-10 w-10" />
-                <span className="text-3xl md:text-4xl font-bold">Vulkanizer</span>
+                <span className="text-3xl md:text-4xl font-bold">
+                  Vulkanizer
+                </span>
               </Link>
               <p>
                 Vaš pouzdani partner za sve vrste guma. Pružamo profesionalnu
-                uslugu zamjene, popravka i održavanja guma već više od 15 godina.
+                uslugu zamjene, popravka i održavanja guma već više od 15
+                godina.
               </p>
             </div>
             <div className="aspect-video relative overflow-hidden">
@@ -172,14 +180,18 @@ export default function Footer() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            {["Navigacija", "Kontakt", "Adresa", "Društvene mreže"].map((title, index) => (
-              <div
-                key={index}
-                className={`px-12 py-6 ${index > 0 ? 'border-l border-gray-600' : ''}`}
-              >
-                <h1 className="text-2xl md:text-3xl font-bold">{title}</h1>
-              </div>
-            ))}
+            {["Navigacija", "Kontakt", "Adresa", "Društvene mreže"].map(
+              (title, index) => (
+                <div
+                  key={index}
+                  className={`px-12 py-6 ${
+                    index > 0 ? "border-l border-gray-600" : ""
+                  }`}
+                >
+                  <h1 className="text-2xl md:text-3xl font-bold">{title}</h1>
+                </div>
+              )
+            )}
           </motion.div>
           <motion.div
             className="grid grid-cols-4 border border-gray-600 border-t-0"
@@ -225,22 +237,26 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            <div className="px-12 py-6 border-l border-gray-600 flex items-start gap-2">
-              <FaLocationDot />
-              <p>Vulkanizerska 123, 10000 Zagreb</p>
+            <div className="px-12 py-6 border-l border-gray-600">
+              <div className="flex items-center gap-2">
+                <FaLocationDot />
+                <p>Vulkanizerska 123, 10000 Zagreb</p>
+              </div>
             </div>
             <div className="grid grid-rows-4 border-l border-gray-600">
               {[
                 { Icon: RiInstagramFill, text: "Instagram" },
                 { Icon: RiLinkedinFill, text: "LinkedIn" },
                 { Icon: RiFacebookBoxFill, text: "Facebook" },
-                { Icon: RiTwitterXFill, text: "Twitter" }
+                { Icon: RiTwitterXFill, text: "Twitter" },
               ].map((item, index, arr) => (
                 <a
                   key={index}
                   href="#"
                   className={`flex items-center gap-3 px-12 py-3 hover:bg-accent transition-colors
-                    ${index < arr.length - 1 ? 'border-b border-gray-600' : ''}`}
+                    ${
+                      index < arr.length - 1 ? "border-b border-gray-600" : ""
+                    }`}
                 >
                   <item.Icon />
                   <span className="whitespace-nowrap">{item.text}</span>

@@ -123,7 +123,7 @@ export function Header() {
             ))}
           </motion.nav>
           <motion.button
-            className="hidden md:inline-flex bg-accent hover:bg-accentLight text-white font-bold py-2 px-4"
+            className="hidden md:inline-flex bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4"
             variants={slideDown}
           >
             Rezerviraj termin
