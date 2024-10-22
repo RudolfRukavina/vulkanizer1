@@ -5,47 +5,47 @@ import {
   TbSettingsSearch,
   TbSettingsShare,
 } from "react-icons/tb";
-import { FaPhoneVolume } from "react-icons/fa";
+import { FaPhoneVolume } from "react-icons/fa6";
 
 function Hero() {
   return (
     <section className="bg-dark text-white px-4 md:px-0 py-8">
       <div className="container mx-auto">
-        <div className="flex flex-col gap-6 md:flex-row justify-between items-center">
+        <div className="flex flex-col gap-6 mb-32 md:mb-0 md:flex-row justify-between items-center">
           <div className="md:w-1/2 mb-10 md:mb-0 z-50 max-w-2xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              In need of tire replacement? We can help.
+              Trebate hitnu zamjenu ili popravak guma? Tu smo za vas!
             </h1>
             <p className="mb-6">
-              Delivering the highest quality auto repair is the way we forge
-              relationships with our customers and the way we&apos;ve always done
-              business.
+              Pružamo profesionalne vulkanizerske usluge već više od 15 godina.
+              Kvaliteta i brzina su naš zaštitni znak, a zadovoljstvo naših
+              klijenata nam je na prvom mjestu.
             </p>
             <button className="bg-accent hover:bg-accentLight text-white font-bold py-2 px-4">
-              Contact Now
+              Nazovite odmah
             </button>
             <div className="mt-8 flex">
               <div className="px-8 border-x border-gray-600">
-                <p className="text-3xl font-bold">320</p>
+                <p className="text-3xl font-bold">15</p>
                 <p className="text-sm">
-                  Experienced <br /> Technicians
+                  Godina <br /> iskustva
                 </p>
               </div>
               <div className="px-8 border-r border-gray-600">
-                <p className="text-3xl font-bold">3561</p>
+                <p className="text-3xl font-bold">20000+</p>
                 <p className="text-sm">
-                  Projects <br /> Completed
+                  Zamijenjenih <br /> guma
                 </p>
               </div>
             </div>
           </div>
-          <div className="md:w-1/2 relative">
+          <div className="w-full md:w-1/2 relative">
             <div className="relative w-full h-0 pb-[66.67%]">
               <Image
                 src="/placeholder.webp"
                 alt="Mechanic working on a car"
-                layout="fill"
-                objectFit="cover"
+                width={1000}
+                height={667}
                 className="absolute inset-0"
                 style={{ zIndex: 1 }}
               />
@@ -61,47 +61,61 @@ function Hero() {
             <div className="absolute -top-8 left-6 rounded-full bg-dark border border-gray-600 p-4">
               <TbSettingsSearch className="h-8 w-8" />
             </div>
-            <h2>All car marks</h2>
+            <h2 className="mb-2 font-bold">Sve vrste guma</h2>
             <p>
-              We give an assortment of fix and support administrations for all
-              vehicle marks and models.
+              Radimo sa svim vrstama i dimenzijama guma - od osobnih automobila
+              do dostavnih vozila i SUV-ova.
             </p>
           </div>
           <div className="border md:border-l-0 border-t-0 md:border-t pb-12 md:pb-6 border-gray-600 p-6 pt-12 relative">
             <div className="absolute -top-8 left-6 rounded-full bg-dark border border-gray-600 p-4">
               <TbSettingsCog className="h-8 w-8" />
             </div>
-            <h2>Variety of services</h2>
+            <h2 className="mb-2 font-bold">Kompletna usluga</h2>
             <p>
-              The main principle of our work is to offer a wide scope of value
-              quality car repair services.
+              Nudimo zamjenu guma, balansiranje, krpanje probušenih guma i
+              savjetovanje pri odabiru novih guma.
             </p>
           </div>
           <div className="border md:border-l-0 border-t-0 md:border-t border-gray-600 p-6 pt-12 relative">
             <div className="absolute -top-8 left-6 rounded-full bg-dark border border-gray-600 p-4">
               <TbSettingsShare className="h-8 w-8" />
             </div>
-            <h2>Quality support</h2>
+            <h2 className="mb-2 font-bold">Brza usluga</h2>
             <p>
-              We offer quality support programs for any vehicle that allows them
-              to always stay fully functional.
+              Većinu popravaka i zamjena obavimo unutar sat vremena. Također
+              nudimo i hitne intervencije na cesti.
             </p>
           </div>
         </div>
-        <div className="flex items-center justify-between flex-col md:flex-row gap-6 mt-20 mb-40">
+        <div
+          id="services-section"
+          className="flex items-end justify-between flex-col md:flex-row gap-6 mt-40 mb-40 relative"
+        >
+          <Image
+            src="/circles-gray.png"
+            width={200}
+            height={200}
+            alt="Decoration circles gray"
+            className="absolute -top-36 right-8 z-0"
+          />
           <div className="max-w-xl">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Our vulcanizer service</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Profesionalne vulkanizerske usluge
+            </h2>
             <p>
-              We offer a wide range of services to meet all your tire needs. Our
-              experienced staff will help you find the best tires for your
-              vehicle and driving style.
+              Kod nas možete pronaći široku ponudu guma vodećih proizvođača po
+              najpovoljnijim cijenama. Naši stručnjaci će vam pomoći odabrati
+              najbolje gume za vaše vozilo.
             </p>
           </div>
-          <div className="flex items-center h-20">
-            <p className="border px-4 h-full flex items-center border-gray-600 border-r-0">Please call us to obtain our services</p>
+          <div className="flex items-center h-20 z-10">
+            <p className="border px-4 h-full flex items-center border-gray-600 border-r-0">
+              Nazovite nas za više informacija
+            </p>
             <button className="flex min-w-fit items-center justify-center gap-2 bg-accent hover:bg-accentLight text-white font-bold h-full px-4">
               <FaPhoneVolume />
-              <span>Call us now</span>
+              <span>Nazovite odmah</span>
             </button>
           </div>
         </div>
