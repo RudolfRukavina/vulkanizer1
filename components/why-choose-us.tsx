@@ -70,7 +70,7 @@ export default function WhyChooseUs() {
     <section className="py-20 bg-dark text-white">
       <div className="container mx-auto px-4 md:px-0">
         <motion.div
-          className="aspect-video relative overflow-hidden w-full h-[450px] -translate-y-40"
+          className="aspect-video overflow-hidden w-full h-[450px] !-translate-y-40"
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
@@ -88,7 +88,7 @@ export default function WhyChooseUs() {
         </motion.div>
         <div id="why-choose-us-section" className="h-10"></div>
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 relative mt-32"
+          className="grid grid-cols-1 md:grid-cols-3 relative"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

@@ -106,7 +106,7 @@ export default function Services() {
   };
 
   return (
-    <section className="bg-light pb-12 md:pb-40">
+    <section className="bg-light pb-40">
       <div className="container mx-auto px-4 md:px-0">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 -translate-y-24"
