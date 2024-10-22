@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Wrench } from "lucide-react";
@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/sheet";
 
 export function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const links = [
     {
       name: "Usluge",
@@ -34,15 +36,29 @@ export function Header() {
 
   const smoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    targetId: string
+    targetId: string,
+    isMobileNav: boolean = false
   ) => {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
+
     if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      if (isMobileNav) {
+        // Close the sheet
+        setIsOpen(false);
+        // Scroll after a brief delay to allow the sheet to close
+        setTimeout(() => {
+          targetElement.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }, 275);
+      } else {
+        targetElement.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
     }
   };
 
@@ -50,8 +66,8 @@ export function Header() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   const slideDown = {
@@ -59,8 +75,8 @@ export function Header() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
-    }
+      transition: { duration: 0.6 },
+    },
   };
 
   const staggerContainer = {
@@ -69,9 +85,9 @@ export function Header() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const menuItem = {
@@ -79,8 +95,8 @@ export function Header() {
     visible: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
 
   return (
@@ -91,19 +107,13 @@ export function Header() {
       animate="visible"
     >
       <div className="container border-b border-gray-600 py-8 px-3 md:px-0 mx-auto flex justify-between items-center">
-        <motion.div
-          className="flex items-center gap-6"
-          variants={slideDown}
-        >
+        <motion.div className="flex items-center gap-6" variants={slideDown}>
           <Link href="/" className="flex items-center space-x-2">
             <Wrench className="h-8 w-8" />
             <span className="font-bold text-2xl">Vulkanizer</span>
           </Link>
         </motion.div>
-        <motion.div
-          className="flex items-center gap-6"
-          variants={slideDown}
-        >
+        <motion.div className="flex items-center gap-6" variants={slideDown}>
           <motion.nav
             className="hidden md:flex items-center gap-6"
             variants={staggerContainer}
@@ -114,7 +124,7 @@ export function Header() {
               <motion.div key={index} variants={menuItem}>
                 <Link
                   href={`#${link.id}`}
-                  onClick={(e) => smoothScroll(e, link.id)}
+                  onClick={(e) => smoothScroll(e, link.id, false)}
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   {link.name}
@@ -128,11 +138,8 @@ export function Header() {
           >
             Rezerviraj termin
           </motion.button>
-          <motion.div
-            className="md:hidden"
-            variants={fadeIn}
-          >
-            <Sheet>
+          <motion.div className="md:hidden" variants={fadeIn}>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="grid place-items-center">
                 <div className="grid grid-cols-2 gap-2 place-items-center">
                   <div className="rounded-full bg-light w-2 h-2"></div>
@@ -155,7 +162,7 @@ export function Header() {
                     <motion.div key={index} variants={menuItem}>
                       <Link
                         href={`#${link.id}`}
-                        onClick={(e) => smoothScroll(e, link.id)}
+                        onClick={(e) => smoothScroll(e, link.id, true)}
                         className="text-dark"
                       >
                         {link.name}

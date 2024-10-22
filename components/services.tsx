@@ -33,51 +33,51 @@ export default function Services() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardVariants = {
     hidden: {
       opacity: 0,
-      y: 50
+      y: 50,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   const fadeInSlideUp = {
     hidden: {
       opacity: 0,
-      y: 30
+      y: 30,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8
-      }
-    }
+        duration: 0.8,
+      },
+    },
   };
 
   const fadeInSlideRight = {
     hidden: {
       opacity: 0,
-      x: -30
+      x: -30,
     },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.8
-      }
-    }
+        duration: 0.8,
+      },
+    },
   };
 
   const statsContainerVariants = {
@@ -86,27 +86,27 @@ export default function Services() {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const statsItemVariants = {
     hidden: {
       opacity: 0,
-      y: 20
+      y: 20,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
-      }
-    }
+        duration: 0.5,
+      },
+    },
   };
 
   return (
-    <section className="bg-light pb-40">
+    <section className="bg-light pb-12 md:pb-40">
       <div className="container mx-auto px-4 md:px-0">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 -translate-y-24"
@@ -184,7 +184,7 @@ export default function Services() {
               />
             </motion.div>
             <motion.div
-              className="flex md:flex-col h-full"
+              className="grid grid-cols-2 sm:flex md:flex-col h-full"
               variants={statsContainerVariants}
               initial="hidden"
               whileInView="visible"
@@ -193,16 +193,15 @@ export default function Services() {
               {[
                 { number: "100%", text: "Zadovoljstvo klijenata" },
                 { number: "20000+", text: "Zamijenjenih guma" },
-                { number: "15", text: "Godina iskustva" }
+                { number: "15", text: "Godina iskustva" },
               ].map((stat, index, array) => (
                 <motion.div
                   key={index}
-                  className={`border flex-1 border-gray-400 ${
-                    index !== array.length - 1
-                      ? 'border-r-0 md:border-r md:border-b-0'
-                      : ''
-                  } p-4 ${
-                    index === array.length - 1 ? 'md:pr-0' : ''
+                  className={`border flex-1 border-gray-400 p-4 ${
+                    index !== array.length - 1 ? "md:border-r" : ""
+                  } ${index === 0 && 'border-r-0 md:border-b-0'}  ${index === 1 && "border-r"} ${
+                    index === array.length - 1 &&
+                    "md:pr-0 col-span-2 border-t-0 grid place-items-center md:place-items-start"
                   }`}
                   variants={statsItemVariants}
                 >
