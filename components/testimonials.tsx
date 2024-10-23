@@ -139,22 +139,28 @@ export default function Testimonials() {
             Iskustva naših klijenata
           </h2>
           <div className="flex space-x-2">
-            <button
+            <motion.button
               onClick={prevTestimonial}
               disabled={currentIndex === 0}
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
               className={`p-2 rounded-full border border-gray-600 text-gray-600 ${
                 currentIndex === 0 && "opacity-50"
               }`}
             >
               <HiOutlineArrowLongLeft size={24} />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={nextTestimonial}
               disabled={
                 isMobile
                   ? currentIndex === totalSlidesMobile - 1
                   : currentIndex === totalSlidesDesktop - 1
               }
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.2 }}
               className={`p-2 rounded-full border border-gray-600 text-gray-600 ${
                 (isMobile
                   ? currentIndex === totalSlidesMobile - 1
@@ -162,7 +168,7 @@ export default function Testimonials() {
               }`}
             >
               <HiOutlineArrowLongRight size={24} />
-            </button>
+            </motion.button>
           </div>
         </motion.div>
 
