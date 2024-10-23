@@ -190,7 +190,7 @@ function Hero() {
             alt="Decoration circles gray"
             className="absolute -top-36 right-8 z-0"
           />
-          <div className="max-w-xl">
+          <div className="max-w-xl z-50">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               Profesionalne vulkanizerske usluge
             </h2>

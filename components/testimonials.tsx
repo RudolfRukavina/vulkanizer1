@@ -89,33 +89,36 @@ export default function Testimonials() {
   const fadeInUp = {
     hidden: {
       opacity: 0,
-      y: 30
+      y: 30,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
-  const testimonialVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
+  const slideVariants = {
+    initial: {
+      opacity: 0,
+      y: 20,
+    },
+    animate: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
-      }
+        duration: 0.3,
+      },
     },
     exit: {
       opacity: 0,
       y: -20,
       transition: {
-        duration: 0.3
-      }
-    }
+        duration: 0.3,
+      },
+    },
   };
 
   return (
@@ -164,54 +167,53 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Desktop view */}
-        <div className="md:grid grid-cols-1 md:grid-cols-2 gap-20 hidden">
+        <div className="hidden md:block min-h-[250px]">
           <AnimatePresence mode="wait">
-            {[0, 1].map((offset) => {
-              const index = currentIndex * 2 + offset;
-              if (index >= testimonials.length) return null;
-              return (
-                <motion.div
-                  key={index}
-                  variants={testimonialVariants}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  layout
-                >
-                  <motion.p
-                    className="italic"
-                    layout
-                  >
-                    &quot;{testimonials[index].comment}&quot;
-                  </motion.p>
-                  <motion.hr className="my-4 border-gray-400" layout />
-                  <motion.div className="flex items-center" layout>
-                    <Image
-                      src={testimonials[index].image}
-                      alt={testimonials[index].name}
-                      width={50}
-                      height={50}
-                      className="rounded-full mr-4"
-                    />
-                    <p className="font-bold">{testimonials[index].name}</p>
-                  </motion.div>
-                </motion.div>
-              );
-            })}
+            <motion.div
+              key={currentIndex}
+              variants={slideVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className="grid grid-cols-2 gap-20"
+            >
+              {[0, 1].map((offset) => {
+                const index = currentIndex * 2 + offset;
+                if (index >= testimonials.length) return null;
+                return (
+                  <div key={index}>
+                    <p className="italic">
+                      &quot;{testimonials[index].comment}&quot;
+                    </p>
+                    <hr className="my-4 border-gray-400" />
+                    <div className="flex items-center">
+                      <Image
+                        src={testimonials[index].image}
+                        alt={testimonials[index].name}
+                        width={50}
+                        height={50}
+                        className="rounded-full mr-4"
+                      />
+                      <p className="font-bold">{testimonials[index].name}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </motion.div>
           </AnimatePresence>
         </div>
 
         {/* Mobile view */}
-        <div className="grid grid-cols-1 md:hidden">
+        <div className="md:hidden min-h-[250px]">
           <AnimatePresence mode="wait">
             {testimonials
               .slice(currentIndex, currentIndex + 1)
               .map((testimonial) => (
                 <motion.div
-                  key={currentIndex}
-                  variants={testimonialVariants}
-                  initial="hidden"
-                  animate="visible"
+                  key={`mobile-testimonial-${currentIndex}`}
+                  variants={slideVariants}
+                  initial="initial"
+                  animate="animate"
                   exit="exit"
                 >
                   <p className="italic">&quot;{testimonial.comment}&quot;</p>

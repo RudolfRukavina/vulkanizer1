@@ -102,7 +102,7 @@ export default function WhyChooseUs() {
             className="absolute -top-28 -right-16 z-0"
           />
           <motion.h1
-            className="text-4xl md:text-5xl font-bold md:col-span-3 border border-gray-600 p-12 pb-20"
+            className="text-4xl md:text-5xl font-bold md:col-span-3 border border-gray-600 p-12 pb-20 z-50"
             variants={fadeInUp}
           >
             Zašto odabrati nas
