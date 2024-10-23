@@ -198,10 +198,12 @@ export default function Services() {
                 <motion.div
                   key={index}
                   className={`border flex-1 border-gray-400 p-4 ${
-                    index !== array.length - 1 ? "md:border-r" : ""
-                  } ${index === 0 && 'border-r-0 md:border-b-0'}  ${index === 1 && "border-r"} ${
+                    index !== array.length - 1 && "md:border-r"
+                  } ${index === 0 && "border-r-0 md:border-b-0"}  ${
+                    index === 1 && "border-r"
+                  } ${
                     index === array.length - 1 &&
-                    "md:pr-0 col-span-2 border-t-0 grid place-items-center md:place-items-start"
+                    "md:pr-0 col-span-2 border-t-0 text-center md:text-left"
                   }`}
                   variants={statsItemVariants}
                 >
