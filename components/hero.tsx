@@ -17,9 +17,9 @@ function Hero() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   const fadeIn = {
@@ -27,23 +27,23 @@ function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.6
-      }
-    }
+        duration: 0.6,
+      },
+    },
   };
 
   const imageReveal = {
     hidden: {
       opacity: 0,
-      x: 50
+      x: 50,
     },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.8
-      }
-    }
+        duration: 0.8,
+      },
+    },
   };
 
   const staggerCards = {
@@ -51,23 +51,23 @@ function Hero() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const cardAnimation = {
     hidden: {
       opacity: 0,
-      y: 20
+      y: 20,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5
-      }
-    }
+        duration: 0.5,
+      },
+    },
   };
 
   return (
@@ -89,9 +89,13 @@ function Hero() {
               Kvaliteta i brzina su naš zaštitni znak, a zadovoljstvo naših
               klijenata nam je na prvom mjestu.
             </p>
-            <button className="bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4"
+            >
               Nazovite odmah
-            </button>
+            </motion.button>
             <motion.div
               className="mt-8 flex"
               variants={fadeIn}
@@ -147,23 +151,26 @@ function Hero() {
             {
               icon: <TbSettingsSearch className="h-8 w-8" />,
               title: "Sve vrste guma",
-              description: "Radimo sa svim vrstama i dimenzijama guma - od osobnih automobila do dostavnih vozila i SUV-ova."
+              description:
+                "Radimo sa svim vrstama i dimenzijama guma - od osobnih automobila do dostavnih vozila i SUV-ova.",
             },
             {
               icon: <TbSettingsCog className="h-8 w-8" />,
               title: "Kompletna usluga",
-              description: "Nudimo zamjenu guma, balansiranje, krpanje probušenih guma i savjetovanje pri odabiru novih guma."
+              description:
+                "Nudimo zamjenu guma, balansiranje, krpanje probušenih guma i savjetovanje pri odabiru novih guma.",
             },
             {
               icon: <TbSettingsShare className="h-8 w-8" />,
               title: "Brza usluga",
-              description: "Većinu popravaka i zamjena obavimo unutar sat vremena. Također nudimo i hitne intervencije na cesti."
-            }
+              description:
+                "Većinu popravaka i zamjena obavimo unutar sat vremena. Također nudimo i hitne intervencije na cesti.",
+            },
           ].map((card, index) => (
             <motion.div
               key={index}
               className={`border ${
-                index > 0 ? 'md:border-l-0 border-t-0 md:border-t' : ''
+                index > 0 ? "md:border-l-0 border-t-0 md:border-t" : ""
               } border-gray-600 p-6 pt-12 pb-12 md:pb-6 relative`}
               variants={cardAnimation}
             >
@@ -176,7 +183,6 @@ function Hero() {
           ))}
         </motion.div>
         <motion.div
-          id="services-section"
           className="flex items-end justify-between flex-col md:flex-row gap-6 mt-40 mb-40 relative"
           variants={fadeInUp}
           initial="hidden"
@@ -191,7 +197,8 @@ function Hero() {
             className="absolute -top-36 right-8 z-0"
           />
           <div className="max-w-xl z-50">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <div id="services-section" className="h-10"></div>
+            <h2 className="text-4xl mt-6 md:text-5xl font-bold mb-4">
               Profesionalne vulkanizerske usluge
             </h2>
             <p>
@@ -204,10 +211,14 @@ function Hero() {
             <p className="border px-4 h-full flex items-center border-gray-600 border-r-0">
               Nazovite nas za više informacija
             </p>
-            <button className="flex min-w-fit items-center justify-center gap-2 bg-accent hover:bg-accentLight transition-colors text-white font-bold h-full px-4">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="flex min-w-fit items-center justify-center gap-2 bg-accent hover:bg-accentLight transition-colors text-white font-bold h-full px-4"
+            >
               <FaPhoneVolume />
               <span>Nazovite odmah</span>
-            </button>
+            </motion.button>
           </div>
         </motion.div>
       </div>

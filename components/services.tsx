@@ -163,9 +163,13 @@ export default function Services() {
               vulkanizera pruža vrhunsku uslugu zamjene i održavanja guma uz
               pristupačne cijene i brzu uslugu.
             </p>
-            <button className="bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4"
+            >
               +(385) 91-453-3298
-            </button>
+            </motion.button>
           </motion.div>
 
           <div className="flex flex-col md:grid md:grid-cols-custom gap-6">

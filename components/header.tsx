@@ -52,7 +52,7 @@ export function Header() {
             behavior: "smooth",
             block: "start",
           });
-        }, 275);
+        }, 300);
       } else {
         targetElement.scrollIntoView({
           behavior: "smooth",
@@ -134,6 +134,8 @@ export function Header() {
           </motion.nav>
           <motion.button
             className="hidden md:inline-flex bg-accent hover:bg-accentLight transition-colors text-white font-bold py-2 px-4"
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
             variants={slideDown}
           >
             Rezerviraj termin
